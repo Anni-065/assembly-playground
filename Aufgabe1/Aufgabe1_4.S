@@ -7,7 +7,7 @@
  *	Aufgabe : Addition mit Abbruch in einer Schleife
  *
  * Überprüfen Sie die Ergebniswerte im Zielregister nach unterschiedlich langen
- * Programmlaufzeiten. Wie groß ist der Maximalwert?
+ * Programmlaufzeiten. Wie groß ist der Maximalwert? 4294967295
  *
  * Wird dieser Maximalwert zuverlässig nach (beliebig) langer Programmlaufzeit erreicht? Ja.
  *
@@ -17,7 +17,7 @@
  *
  * Bestimmen Sie die Taktfrequenz des Prozessors durch Zählen der Schleifendurchläufe bei einer
  * Laufzeit von einer Minute. Achtung: Der Branch (b)-Befehl benötigt drei Prozessortakte!
- *
+ * Nach 1 Minute: r0=2159026 -> Taktfrequenz: 2159026*5/60 = 179919 Hz
  *
  */
 .text /* Specify that code goes in text segment */
@@ -25,10 +25,11 @@
 .global _startup /* Specify global symbol */
 _startup:
 
-	mov r0, #1
+	mov r0, #0
 	mov r1, #1
 
 	while:
+		mov r2, r0
 		adds r0, r1
 		bcc while
 
